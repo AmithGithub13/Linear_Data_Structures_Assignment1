@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+</head>
+<body>
+    <script>
+        class Stack {
+  constructor() {
+    this.stack = [];
+    this.minStack = [];
+  }
+
+  push(item) {
+    this.stack.push(item);
+
+    if (this.minStack.length === 0 || item <= this.minStack[this.minStack.length - 1]) {
+      this.minStack.push(item);
+    }
+  }
+
+  pop() {
+    const item = this.stack.pop();
+
+    if (item === this.minStack[this.minStack.length - 1]) {
+      this.minStack.pop();
+    }
+
+    return item;
+  }
+
+  getMin() {
+    return this.minStack[this.minStack.length - 1];
+  }
+}
+
+const stack = new Stack();
+
+stack.push(3);
+stack.push(5);
+stack.push(1);
+stack.push(2);
+
+console.log("Smallest number: ", stack.getMin()); // Output: Smallest number: 1
+
+    </script>
+</body>
+</html>

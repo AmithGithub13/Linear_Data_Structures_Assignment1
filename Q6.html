@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6</title>
+</head>
+<body>
+    <script>
+        function postfixToPrefix(postfixExp) {
+  const stack = [];
+
+  // Loop through each character in the postfix expression
+  for (let i = 0; i < postfixExp.length; i++) {
+    const char = postfixExp[i];
+
+    // If the character is an operator, pop the top two elements from the stack,
+    // add them to a new string with the operator as the prefix, and push the new
+    // string onto the stack
+    if (isOperator(char)) {
+      const operand2 = stack.pop();
+      const operand1 = stack.pop();
+      const newExp = char + operand1 + operand2;
+      stack.push(newExp);
+    } else {
+      // If the character is an operand, push it onto the stack
+      stack.push(char);
+    }
+  }
+
+  // The final element in the stack is the prefix expression
+  return stack.pop();
+}
+
+function isOperator(char) {
+  return char === "+" || char === "-" || char === "*" || char === "/";
+}
+
+// Example usage
+const postfixExp = "34+2*";
+const prefixExp = postfixToPrefix(postfixExp);
+console.log(prefixExp); // Output: *+342
+
+    </script>
+</body>
+</html>

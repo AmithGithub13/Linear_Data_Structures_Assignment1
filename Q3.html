@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+</head>
+<body>
+    <script>
+        function areRotations(str1, str2) {
+  // Check if the lengths of the two strings are the same
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  
+  // Concatenate the first string with itself
+  const concatenatedString = str1 + str1;
+  
+  // Check if the second string is a substring of the concatenated string
+  if (concatenatedString.includes(str2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Example usage
+console.log(areRotations('hello', 'llohe')); // true
+console.log(areRotations('hello', 'lloeh')); // false
+
+    </script>
+</body>
+</html>

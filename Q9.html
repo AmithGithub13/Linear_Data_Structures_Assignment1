@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+</head>
+<body>
+    <script>
+       
+       // Define a Stack class
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  
+  // Push an element onto the stack
+  push(element) {
+    this.items.push(element);
+  }
+  
+  // Pop an element from the stack
+  pop() {
+    return this.items.pop();
+  }
+  
+  // Check if the stack is empty
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  
+  // Get the size of the stack
+  size() {
+    return this.items.length;
+  }
+  
+  // Print the stack elements
+  print() {
+    console.log(this.items.toString());
+  }
+  
+  // Reverse the stack
+  reverse() {
+    const auxStack = new Stack();
+    
+    // Pop all elements from the original stack and push them onto the auxiliary stack
+    while (!this.isEmpty()) {
+      auxStack.push(this.pop());
+    }
+    
+    // Pop all elements from the auxiliary stack and push them back onto the original stack
+    while (!auxStack.isEmpty()) {
+      this.push(auxStack.pop());
+    }
+  }
+}
+
+// Example usage
+const stack = new Stack();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.push(4);
+console.log("Original Stack:");
+stack.print();
+
+stack.reverse();
+console.log("Reversed Stack:");
+stack.print();
+
+       
+    </script>
+</body>
+</html>

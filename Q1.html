@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+</head>
+<body>
+    <script>
+        function findPairs(arr, targetSum) {
+        const pairs = [];
+        const numMap = new Map();
+  
+        for (let num of arr) {
+        const complement = targetSum - num;
+    
+        if (numMap.has(complement)) {
+            pairs.push([num, complement]);
+        }
+    
+        numMap.set(num, true);
+    }
+  
+    return pairs;
+    }
+
+    const arr = [2, 4, 5, 3, 7, 8, 9];
+    const targetSum = 7;
+
+    const pairs = findPairs(arr, targetSum);
+    console.log(pairs); // output: [[2, 5], [4, 3]]
+
+    </script>
+</body>
+</html>

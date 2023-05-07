@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+</head>
+<body>
+    <script>
+    function areBracketsClosed(code) {
+  const bracketStack = [];
+  const openBrackets = ['(', '[', '{'];
+  const closeBrackets = [')', ']', '}'];
+
+  for (let i = 0; i < code.length; i++) {
+    const char = code[i];
+    if (openBrackets.includes(char)) {
+      bracketStack.push(char);
+    } else if (closeBrackets.includes(char)) {
+      const openBracket = openBrackets[closeBrackets.indexOf(char)];
+      if (bracketStack.length === 0 || bracketStack.pop() !== openBracket) {
+        return false;
+      }
+    }
+  }
+
+  return bracketStack.length === 0;
+}
+const codeSnippet = '(function() { const x = [1, 2, 3]; return { x }; })();';
+const areTheBracketsClosed = areBracketsClosed(codeSnippet);
+console.log(areTheBracketsClosed); // true
+        
+
+    </script>
+</body>
+</html>

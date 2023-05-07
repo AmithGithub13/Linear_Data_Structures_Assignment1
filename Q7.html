@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 7</title>
+</head>
+<body>
+    <script>
+        function prefixToInfix(expression) {
+  const stack = [];
+
+  for (let i = expression.length - 1; i >= 0; i--) {
+    if (isOperator(expression[i])) {
+      const operand1 = stack.pop();
+      const operand2 = stack.pop();
+      const infixExpr = `(${operand1}${expression[i]}${operand2})`;
+      stack.push(infixExpr);
+    } else {
+      stack.push(expression[i]);
+    }
+  }
+
+  return stack.pop();
+}
+
+function isOperator(char) {
+  return ['+', '-', '*', '/', '^'].indexOf(char) !== -1;
+}
+const prefixExpr = '*+AB-CD'; // Prefix expression
+const infixExpr = prefixToInfix(prefixExpr); // Infix expression
+console.log(infixExpr); // Outputs: ((A+B)*(C-D))
+
+    </script>
+</body>
+</html>
